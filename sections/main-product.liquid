@@ -100,11 +100,13 @@
                 <div class="product__title" {{ block.shopify_attributes }}>
                   <h1>{{ product.title | escape }}</h1>
                   <a href="{{ product.url }}" class="product__title">
-                    <h2 class="h1">
-                      {{ product.title | escape }}
-                    </h2>
+                    <h2 class="h1">{{ product.title | escape }}</h2>
                   </a>
                 </div>
+              {%- when 'upsell' -%}
+                {% if block.settings.show_upsell_module %}
+                  <h1>This is working</h1>
+                {% endif %}
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -849,6 +851,26 @@
       "type": "quantity_selector",
       "name": "t:sections.main-product.blocks.quantity_selector.name",
       "limit": 1
+    },
+    {
+      "type": "upsell",
+      "name": "Upsell Module",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_upsell_module",
+          "label": "Show upsell module",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "max_products",
+          "label": "Maximum number of products to display",
+          "min": 1,
+          "max": 4,
+          "default": 2
+        }
+      ]
     },
     {
       "type": "variant_picker",
