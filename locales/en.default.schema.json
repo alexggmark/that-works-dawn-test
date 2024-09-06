@@ -1995,6 +1995,11 @@
         "price": {
           "name": "Price"
         },
+        "upsell": {
+          "settings": {
+            "title_label": "Check out some of your recently viewed products!"
+          }
+        },
         "inventory": {
           "name": "Inventory status",
           "settings": {
